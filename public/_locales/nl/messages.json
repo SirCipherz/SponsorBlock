@@ -4,17 +4,17 @@
         "description": "Name of the extension."
     },
     "Description": {
-        "message": "Overslaan van sponsoring, abonneer-herinneringen en meer in YouTube-video's. Rapporteer sponsors in video's die u bekijkt om anderen tijd te besparen.",
+        "message": "Overslaan van sponsors, vragen om te abonneren en meer in YouTube-video's. Rapporteer sponsors in video's die u bekijkt om anderen tijd te besparen.",
         "description": "Description of the extension."
     },
     "400": {
         "message": "Server zegt dat het verzoek ongeldig is"
     },
     "429": {
-        "message": "U hebt te veel sponsortijdstippen ingediend voor deze video. Weet u zeker dat er zoveel zijn?"
+        "message": "U heeft te veel sponsortijdstippen ingediend voor deze video. Weet u zeker dat er zoveel zijn?"
     },
     "409": {
-        "message": "Dit is al een keer ingediend"
+        "message": "Dit is al eerder ingediend"
     },
     "channelWhitelisted": {
         "message": "Kanaal gewhitelist!"
@@ -39,12 +39,6 @@
     },
     "Loading": {
         "message": "Laden..."
-    },
-    "Mins": {
-        "message": "Minuten"
-    },
-    "Secs": {
-        "message": "Seconden"
     },
     "Hide": {
         "message": "Nooit weergeven"
@@ -86,7 +80,7 @@
         "message": "Segment eindigt nu"
     },
     "noVideoID": {
-        "message": "Er is geen YouTube-video gevonden op dit tabblad. Als u weet dat dit een YouTube-tabblad is, sluit dan deze pop-up en open hem opnieuw. Als dat niet werkt, probeer dan het tabblad opnieuw te laden."
+        "message": "Geen YouTube-video gevonden.\nVernieuw het tabblad als dit onjuist is."
     },
     "success": {
         "message": "Gelukt!"
@@ -95,7 +89,7 @@
         "message": "Gestemd!"
     },
     "serverDown": {
-        "message": "Het lijkt er op dat de server offline is. Neem onmiddellijk contact op met de ontwikkelaar."
+        "message": "Het lijkt erop dat de server offline is. Neem onmiddellijk contact op met de ontwikkelaar."
     },
     "connectionError": {
         "message": "Er is een verbindingsfout opgetreden. Foutcode: "
@@ -130,23 +124,24 @@
     "voteOnTime": {
         "message": "Stemmen op een segment"
     },
-    "soFarUHSubmited": {
-        "message": "Tot nu toe heeft u ingediend:"
+    "Submissions": {
+        "message": "Inzendingen"
     },
     "savedPeopleFrom": {
-        "message": "U heeft mensen geholpen met het vermijden van "
+        "message": "U heeft mensen gered van "
     },
     "viewLeaderboard": {
-        "message": "Bekijk de ranglijst"
-    },
-    "here": {
-        "message": "hier"
+        "message": "Ranglijst"
     },
     "recordTimesDescription": {
-        "message": "Klik op de knop hieronder wanneer het segment begint en eindigt om het te registreren en te verzenden naar de database."
+        "message": "Indienen"
+    },
+    "submissionEditHint": {
+        "message": "Sectiebewerking verschijnt nadat u op verzenden hebt geklikt",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Tip: druk op de puntkomma-toets terwijl een video in focus is om het begin/einde van een segment te registreren en op de aanhalingsteken-toets om het in te dienen (dit kan worden gewijzigd in de opties)."
+        "message": "Tip: u kunt sneltoetsen voor het indienen instellen in de opties"
     },
     "clearTimesButton": {
         "message": "Tijdstippen wissen"
@@ -156,6 +151,9 @@
     },
     "publicStats": {
         "message": "Dit wordt gebruikt op de publieke statistiekenpagina om te laten zien hoeveel u heeft bijgedragen. Bekijk het"
+    },
+    "Username": {
+        "message": "Gebruikersnaam"
     },
     "setUsername": {
         "message": "Gebruikersnaam instellen"
@@ -200,7 +198,19 @@
         "message": "Bijhouden van het aantal keren overslaan inschakelen"
     },
     "whatViewTracking": {
-        "message": "Deze functie houdt bij welke segmenten u hebt overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
+        "message": "Deze functie houdt bij welke segmenten u heeft overgeslagen om gebruikers te laten weten hoezeer hun indiening anderen heeft geholpen en wordt samen met upvotes als meetwaarde gebruikt om ervoor te zorgen dat spam niet in de database terechtkomt. De extensie stuurt telkens wanneer u een segment overslaat een bericht naar de server. Hopelijk veranderen de meeste mensen deze instelling niet zodat de weergavenummers accuraat zijn. :)"
+    },
+    "enableQueryByHashPrefix": {
+        "message": "Opvragen via hash-voorvoegsel"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "In plaats van segmenten op te vragen bij de server met behulp van de video-ID, worden de eerste 4 tekens van de hash van de video-ID verzonden. Deze server zal gegevens terugsturen voor alle video's met een vergelijkbare hash."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Segmenten voor nieuwe video's opnieuw ophalen"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Als de video nieuw is en er geen segmenten worden gevonden, zal om de zoveel minuten opnieuw worden gecontroleerd terwijl u kijkt."
     },
     "showNotice": {
         "message": "Melding opnieuw weergeven"
@@ -241,10 +251,10 @@
         "message": "Time-out van de verbinding. Controleer uw internetverbinding. Als uw internet werkt, is de server waarschijnlijk overbelast of offline."
     },
     "disableSkipping": {
-        "message": "SponsorBlock uitschakelen"
+        "message": "Overslaan is ingeschakeld"
     },
     "enableSkipping": {
-        "message": "SponsorBlock inschakelen"
+        "message": "Overslaan is uitgeschakeld"
     },
     "yourWork": {
         "message": "Uw werk",
@@ -258,6 +268,9 @@
     },
     "skip": {
         "message": "Overslaan"
+    },
+    "skip_category": {
+        "message": "{0} overslaan?"
     },
     "skipped": {
         "message": "Overgeslagen"
@@ -281,10 +294,10 @@
         "message": "Deze tijd verschijnt tussen haakjes naast de huidige tijd onder de tijdbalk. Dit geeft de totale videoduur min alle segmenten weer. Dit is inclusief segmenten die gemarkeerd zijn als alleen \"weergeven in tijdbalk\"."
     },
     "youHaveSkipped": {
-        "message": "U hebt overgeslagen: "
+        "message": "U heeft overgeslagen: "
     },
     "youHaveSaved": {
-        "message": "U hebt uzelf bespaard: "
+        "message": "U heeft zichzelf bespaard: "
     },
     "minLower": {
         "message": "minuut"
@@ -299,10 +312,10 @@
         "message": "uren"
     },
     "youHaveSavedTime": {
-        "message": "U hebt andere mensen bespaard:"
+        "message": "U heeft mensen bespaard:"
     },
     "youHaveSavedTimeEnd": {
-        "message": " van hun leven."
+        "message": " van hun leven"
     },
     "statusReminder": {
         "message": "Controleer status.sponsor.ajay.app voor de serverstatus."
@@ -374,7 +387,7 @@
         "message": "Uploaden-knop weergeven"
     },
     "whatUploadButton": {
-        "message": "Deze knop verschijnt op de YouTube-speler nadat u een tijdstempel hebt geselecteerd en klaar bent om in te dienen."
+        "message": "Deze knop verschijnt op de YouTube-speler nadat u een tijdstempel heeft geselecteerd en klaar bent om in te dienen."
     },
     "customServerAddress": {
         "message": "SponsorBlock-serveradres"
@@ -559,6 +572,10 @@
     "chooseACategory": {
         "message": "Een categorie kiezen"
     },
+    "enableThisCategoryFirst": {
+        "message": "Om segmenten met de categorie \"{0}\" in te dienen, moet u deze in de opties inschakelen. U wordt nu doorgestuurd naar de opties.",
+        "description": "Used when submitting segments to only let them select a certain category if they have it enabled in the options."
+    },
     "youMustSelectACategory": {
         "message": "U moet een categorie selecteren voor alle segmenten die u indient!"
     },
@@ -619,5 +636,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Een melding sturen wanneer u een video verlaat met segmenten die niet zijn geüpload"
+    },
+    "help": {
+        "message": "Help"
     }
 }

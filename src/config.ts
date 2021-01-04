@@ -1,5 +1,5 @@
 import * as CompileConfig from "../config.json";
-import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime } from "./types";
+import { CategorySelection, CategorySkipOption, PreviewBarOption, SponsorTime, StorageChangesObject } from "./types";
 
 import Utils from "./utils";
 const utils = new Utils();
@@ -55,11 +55,13 @@ interface SBConfig {
         "preview-selfpromo": PreviewBarOption,
         "music_offtopic": PreviewBarOption,
         "preview-music_offtopic": PreviewBarOption,
-    }
+    },
+
+    hasShownYouCapNotice: boolean
 }
 
-interface SBObject {
-    configListeners: Array<Function>;
+export interface SBObject {
+    configListeners: Array<(changes: StorageChangesObject) => unknown>;
     defaults: SBConfig;
     localConfig: SBConfig;
     config: SBConfig;
@@ -132,7 +134,7 @@ class SBMap<T, U> extends Map {
     }
 }
 
-var Config: SBObject = {
+const Config: SBObject = {
     /**
      * Callback function when an option is updated
      */
@@ -149,7 +151,7 @@ var Config: SBObject = {
         skipCount: 0,
         sponsorTimesContributed: 0,
         submissionCountSinceCategories: 0,
-	    showTimeWithSkips: true,
+        showTimeWithSkips: true,
         unsubmittedWarning: true,
         disableSkipping: false,
         trackViewCount: true,
@@ -229,7 +231,9 @@ var Config: SBObject = {
                 color: "#a6634a",
                 opacity: "0.7"
             }
-        }
+        },
+
+        hasShownYouCapNotice: false
     },
     localConfig: null,
     config: null,
@@ -275,8 +279,8 @@ function decodeStoredItem<T>(id: string, data: T): T | SBMap<string, SponsorTime
     return data;
 }
 
-function configProxy(): any {
-    chrome.storage.onChanged.addListener((changes, namespace) => {
+function configProxy(): SBConfig {
+    chrome.storage.onChanged.addListener((changes: {[key: string]: chrome.storage.StorageChange}) => {
         for (const key in changes) {
             Config.localConfig[key] = decodeStoredItem(key, changes[key].newValue);
         }
@@ -286,8 +290,8 @@ function configProxy(): any {
         }
     });
 	
-    var handler: ProxyHandler<any> = {
-        set(obj, prop, value) {
+    const handler: ProxyHandler<SBConfig> = {
+        set<K extends keyof SBConfig>(obj: SBConfig, prop: K, value: SBConfig[K]) {
             Config.localConfig[prop] = value;
 
             chrome.storage.sync.set({
@@ -297,13 +301,13 @@ function configProxy(): any {
             return true;
         },
 
-        get(obj, prop): any {
-            let data = Config.localConfig[prop];
+        get<K extends keyof SBConfig>(obj: SBConfig, prop: K): SBConfig[K] {
+            const data = Config.localConfig[prop];
 
             return obj[prop] || data;
         },
 	
-        deleteProperty(obj, prop) {
+        deleteProperty(obj: SBConfig, prop: keyof SBConfig) {
             chrome.storage.sync.remove(<string> prop);
             
             return true;
@@ -311,11 +315,11 @@ function configProxy(): any {
 
     };
 
-    return new Proxy({handler}, handler);
+    return new Proxy<SBConfig>({handler} as unknown as SBConfig, handler);
 }
 
-function fetchConfig() { 
-    return new Promise((resolve, reject) => {
+function fetchConfig(): Promise<void> { 
+    return new Promise((resolve) => {
         chrome.storage.sync.get(null, function(items) {
             Config.localConfig = <SBConfig> <unknown> items;  // Data is ready
             resolve();
@@ -351,7 +355,7 @@ function migrateOldFormats(config: SBConfig) {
     if (config.whitelistedChannels.length > 0 && 
             (config.whitelistedChannels[0] == null || config.whitelistedChannels[0].includes("/"))) {
         const channelURLFixer = async() => {
-            let newChannelList: string[] = [];
+            const newChannelList: string[] = [];
             for (const item of config.whitelistedChannels) {
                 if (item != null) {
                     if (item.includes("/channel/")) {
@@ -360,7 +364,7 @@ function migrateOldFormats(config: SBConfig) {
 
                         
                         // Replace channel URL with channelID
-                        let response = await utils.asyncRequestToCustomServer("GET", "https://sponsor.ajay.app/invidious/api/v1/channels/" + item.split("/")[2] + "?fields=authorId");
+                        const response = await utils.asyncRequestToCustomServer("GET", "https://sponsor.ajay.app/invidious/api/v1/channels/" + item.split("/")[2] + "?fields=authorId");
                     
                         if (response.ok) {
                             newChannelList.push((JSON.parse(response.responseText)).authorId);
@@ -408,9 +412,9 @@ function migrateOldFormats(config: SBConfig) {
 
         // Otherwise junk data
         if (Array.isArray(jsonData)) {
-            let oldMap = new Map(jsonData);
+            const oldMap = new Map(jsonData);
             oldMap.forEach((sponsorTimes: number[][], key) => {
-                let segmentTimes: SponsorTime[] = [];
+                const segmentTimes: SponsorTime[] = [];
                 for (const segment of sponsorTimes) {
                     segmentTimes.push({
                         segment: segment,
@@ -439,11 +443,6 @@ async function setupConfig() {
     Config.config = config;
 }
 
-// Reset config
-function resetConfig() {
-    Config.config = Config.defaults;
-};
-
 function convertJSON(): void {
     Object.keys(Config.localConfig).forEach(key => {
         Config.localConfig[key] = decodeStoredItem(key, Config.localConfig[key]);
@@ -453,17 +452,17 @@ function convertJSON(): void {
 // Add defaults
 function addDefaults() {
     for (const key in Config.defaults) {
-        if(!Config.localConfig.hasOwnProperty(key)) {
-	        Config.localConfig[key] = Config.defaults[key];
+        if(!Object.prototype.hasOwnProperty.call(Config.localConfig, key)) {
+            Config.localConfig[key] = Config.defaults[key];
         } else if (key === "barTypes") {
             for (const key2 in Config.defaults[key]) {
-                if(!Config.localConfig[key].hasOwnProperty(key2)) {
+                if(!Object.prototype.hasOwnProperty.call(Config.localConfig[key], key2)) {
                     Config.localConfig[key][key2] = Config.defaults[key][key2];
                 }
             }
         }
     }
-};
+}
 
 // Sync config
 setupConfig();

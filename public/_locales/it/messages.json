@@ -40,12 +40,6 @@
     "Loading": {
         "message": "Caricamento..."
     },
-    "Mins": {
-        "message": "Minuti"
-    },
-    "Secs": {
-        "message": "Secondi"
-    },
     "Hide": {
         "message": "Non mostrare più"
     },
@@ -86,7 +80,7 @@
         "message": "Il Segmento Termina Ora"
     },
     "noVideoID": {
-        "message": "Probabilmente questa non è una scheda di YouTube, oppure hai cliccato troppo presto. \nSe sei sicuro di essere in una scheda di YouTube,\n riapri questo popup."
+        "message": "Nessun video YouTube trovato.\nSe questo non è corretto, ricarica la scheda."
     },
     "success": {
         "message": "Successo!"
@@ -121,32 +115,27 @@
     "submitCheck": {
         "message": "Sei sicuro di volerlo inviare?"
     },
-    "whitelistChannel": {
-        "message": "Aggiungi Canale alla Whitelist"
-    },
-    "removeFromWhitelist": {
-        "message": "Rimuovi Canale dalla Whitelist"
-    },
     "voteOnTime": {
         "message": "Vota un Segmento"
     },
-    "soFarUHSubmited": {
-        "message": "Fino ad ora hai inviato"
+    "Submissions": {
+        "message": "Iscrizioni"
     },
     "savedPeopleFrom": {
         "message": "Hai salvato le persone da "
     },
     "viewLeaderboard": {
-        "message": "Guarda la classifica"
-    },
-    "here": {
-        "message": "qui"
+        "message": "Classifica"
     },
     "recordTimesDescription": {
-        "message": "Premi il pulsante in basso quando il segmento inizia e finisce per registrarlo ed inviarlo al database."
+        "message": "Invia"
+    },
+    "submissionEditHint": {
+        "message": "La modifica della sezione comparirà dopo aver cliccato Iscriviti",
+        "description": "Appears in the popup to inform them that editing has been moved to the video player."
     },
     "popupHint": {
-        "message": "Suggerimento: Premi il pulsante 'punto e virgola' mentre sei concentrato su un video, per segnalare l'inizio e la fine di un segmento e la relativa citazione da inviare. (Questo può essere modificato nelle opzioni)"
+        "message": "Suggerimento: Puoi configurare combinazioni di tasti per l'inserimento nelle opzioni"
     },
     "clearTimesButton": {
         "message": "Cancella Minutaggi"
@@ -156,6 +145,9 @@
     },
     "publicStats": {
         "message": "Viene utilizzato nelle pagine delle statistiche pubbliche che mostrano quanto hai contribuito. Vedi"
+    },
+    "Username": {
+        "message": "Nome Utente"
     },
     "setUsername": {
         "message": "Imposta Username"
@@ -202,6 +194,18 @@
     "whatViewTracking": {
         "message": "Questa funzionalità tiene traccia dei segmenti che hai saltato, per far sapere agli utenti quanto il loro contributo abbia aiutato gli altri e sia stato utilizzato come metrica insieme ai voti positivi, per garantire che lo spam non entri nel database. L'estensione invierà un messaggio al server ogni volta che salterai un segmento. Si spera che la maggior parte delle persone non modifichino questa impostazione, in modo da non intaccare l'accuratezza dei numeri di visualizzazione. :)"
     },
+    "enableQueryByHashPrefix": {
+        "message": "Ricerca tramite prefisso hash"
+    },
+    "whatQueryByHashPrefix": {
+        "message": "Invece di richiedere segmenti dal server utilizzando l'Id video, vengono inviati i primi 4 caratteri dell'hash dell'ID video. Questo server invierà i dati per tutti i video con hash simili."
+    },
+    "enableRefetchWhenNotFound": {
+        "message": "Ricarica I Segmenti Su Nuovi Video"
+    },
+    "whatRefetchWhenNotFound": {
+        "message": "Se il video è nuovo, e non risultano esserci segmenti, questi continueranno ad essere ricaricati dopo pochi minuti mentre guardi il video."
+    },
     "showNotice": {
         "message": "Mostra di Nuovo l'Avviso"
     },
@@ -241,10 +245,10 @@
         "message": "Timeout della connessione. Controlla la tua connessione a Internet. Se internet sta funzionando, il server è probabilmente sovraccarico oppure giù."
     },
     "disableSkipping": {
-        "message": "Disabilita SponsorBlock"
+        "message": "Salta abilitato"
     },
     "enableSkipping": {
-        "message": "Abilita SponsorBlock"
+        "message": "Salta disabilitato"
     },
     "yourWork": {
         "message": "Il Tuo Lavoro",
@@ -258,6 +262,9 @@
     },
     "skip": {
         "message": "Salta"
+    },
+    "skip_category": {
+        "message": "Saltare {0}?"
     },
     "skipped": {
         "message": "Saltato"
@@ -299,10 +306,10 @@
         "message": "ore"
     },
     "youHaveSavedTime": {
-        "message": "Hai salvato alle persone"
+        "message": "Hai salvato le persone"
     },
     "youHaveSavedTimeEnd": {
-        "message": " delle loro vite."
+        "message": " delle loro vite"
     },
     "statusReminder": {
         "message": "Controlla status.sponsor.ajay.app per lo stato del server."
@@ -619,5 +626,8 @@
     },
     "unsubmittedWarningDescription": {
         "message": "Invia una notifica quando lasci un video con segmenti non caricati"
+    },
+    "help": {
+        "message": "Aiuto"
     }
 }

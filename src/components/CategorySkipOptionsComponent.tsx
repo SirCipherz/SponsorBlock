@@ -2,9 +2,6 @@ import * as React from "react";
 
 import Config from "../config"
 import { CategorySkipOption } from "../types";
-import Utils from "../utils";
-
-const utils = new Utils();
 
 export interface CategorySkipOptionsProps { 
     category: string;
@@ -29,7 +26,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         }
     }
 
-    render() {
+    render(): React.ReactElement {
         let defaultOption = "disable";
         // Set the default opton properly
         for (const categorySelection of Config.config.categorySelections) {
@@ -145,9 +142,9 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
     }
 
     getCategorySkipOptions(): JSX.Element[] {
-        let elements: JSX.Element[] = [];
+        const elements: JSX.Element[] = [];
 
-        let optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
+        const optionNames = ["disable", "showOverlay", "manualSkip", "autoSkip"];
 
         for (const optionName of optionNames) {
             elements.push(
@@ -160,7 +157,7 @@ class CategorySkipOptionsComponent extends React.Component<CategorySkipOptionsPr
         return elements;
     }
 
-    setColorState(event: React.FormEvent<HTMLInputElement>, preview: boolean) {
+    setColorState(event: React.FormEvent<HTMLInputElement>, preview: boolean): void {
         if (preview) {
             this.setState({
                 previewColor: event.currentTarget.value

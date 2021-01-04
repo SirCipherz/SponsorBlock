@@ -1,4 +1,8 @@
 {
+    "fullName": {
+        "message": "SponsorBlock for YouTube - Skip Sponsorships",
+        "description": "Name of the extension."
+    },
     "Segment": {
         "message": "τμήμα"
     },
@@ -20,12 +24,6 @@
     "Loading": {
         "message": "Φόρτωση..."
     },
-    "Mins": {
-        "message": "Λεπτά"
-    },
-    "Secs": {
-        "message": "Δευτερόλεπτα"
-    },
     "Hide": {
         "message": "Να μην εμφανίζεται ποτέ"
     },
@@ -46,9 +44,6 @@
     },
     "clearTimes": {
         "message": "Καθαρισμός τμημάτων"
-    },
-    "here": {
-        "message": "εδώ"
     },
     "Options": {
         "message": "Επιλογές"
